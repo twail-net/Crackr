@@ -1,4 +1,4 @@
-from nltk.tag.stanford import POSTagger
+from nltk.tag.stanford import StanfordPOSTagger
 import textprocess as tp
 import os, time
 
@@ -12,8 +12,8 @@ except:
     pwd = os.getcwd()
     
 print "POSTagger Loaded"
-post = POSTagger(pwd+'/stanford-postagger/models/english-bidirectional-distsim.tagger',
-                 pwd+"/stanford-postagger/stanford-postagger.jar")
+post = StanfordPOSTagger(pwd+'/stanford-postagger/models/english-bidirectional-distsim.tagger',
+                         pwd+"/stanford-postagger/stanford-postagger.jar", java_options="-mx3000m")
 
 def tag(text):
     text = tp.preprocess(text)
